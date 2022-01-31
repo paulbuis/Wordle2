@@ -21,9 +21,7 @@ public class ClueList {
             WordleClue clue = ClueFactory.make(encodedClue);
             clues.add(clue);
         } catch (IllegalArgumentException iae) {
-            System.err.println(String.format(
-                    "Illegal Clue: %s",
-                    encodedClue));
+            System.err.printf("Illegal Clue: %s\n", encodedClue);
         }
     }
 
