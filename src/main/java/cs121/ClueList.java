@@ -17,8 +17,14 @@ public class ClueList {
     }
 
     public void add(String encodedClue) {
-        WordleClue clue = ClueFactory.make(encodedClue);
-        clues.add(clue);
+        try {
+            WordleClue clue = ClueFactory.make(encodedClue);
+            clues.add(clue);
+        } catch (IllegalArgumentException iae) {
+            System.err.println(String.format(
+                    "Illegal Clue: %s",
+                    encodedClue));
+        }
     }
 
     public void addAll(ClueList moreClues) {
@@ -32,9 +38,9 @@ public class ClueList {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        for (int index=0; index < clues.size(); index++) {
+        for (int index = 0; index < clues.size(); index++) {
             sb.append(clues.get(index).toString());
-            if (index != (clues.size()-1)) {
+            if (index != (clues.size() - 1)) {
                 sb.append(" ");
             }
         }
